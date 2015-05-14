@@ -4633,7 +4633,7 @@ All the fields provided in the example request body JSON need to be present in o
                 "data": ""
             }
         }
-
+        
 
 ## Cancel orders [/org/{site_name}/api/v1/order/orderStatus?orderIds={order_ids}&newStatus={new_status}]
 Cancel orders with the provided order Ids.
@@ -4731,4 +4731,127 @@ Returns an error if the line item cannot be release (e.g. it was never on hold)
                 "data": ""
             }
         }
+        
 
+
+        
+        
+# Group Order_V3
+
+The new API V3 endpoint for creating an order
+
+## Orders (V3) [/org/{site_name}/api/v3/orders]
+
++ Parameters
+    + site_name (required, string, `traveldemo`) ... `site name` to which the Order belongs
+
+### Create an Order [POST]
++ Request
+
+    + Header
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "importRef": "184084279",
+                "importSource": "EXTERNAL-ACME",
+                "purchasingChannel": {
+                    "name": "Retail"
+                },
+                "updatedAt": "2014-04-04T12:13:34-04:00",
+                "createdAt": "2013-09-20T23:19:57-04:00",
+                "authorizationCode": "shopify_order#None",
+                "internalNotes": "",
+                "customer": {
+                    "email": "fahad@symphonycommerce.com"
+                },
+                "customerWebInfo": {
+                    "browserIp": "24.151.61.239",
+                    "email": "fahad@symphonycommerce.com"
+                },
+                "shippingAddress": {
+                    "firstName": "Fahad",
+                    "lastName": "Ghani",
+                    "street1": "1045 Bryant Street",
+                    "street2": null,
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "country": "United States",
+                    "zip": "94103",
+                    "email": "test+normal@symphonycommerce.com",
+                    "phone": "8057002000",
+                    "company": null
+                },
+                "billingProfileUsed": {
+                    "firstName": "Fahad",
+                    "lastName": "Ghani",
+                    "street1": "1045 Bryant Street",
+                    "street2": null,
+                    "city": "San Francisco",
+                    "state": "CA",
+                    "country": "United States",
+                    "zip": "94103",
+                    "email": "test+normal@symphonycommerce.com",
+                    "phone": "8057002000",
+                    "company": null
+                },
+                "orderFinancial": {
+                    "taxesApplicable": [
+                        {
+                            "display": "tax",
+                            "value": 0
+                        }
+                    ],
+                    "shippingAndHandling": [
+                        {
+                            "display": "shipping",
+                            "value": 0
+                        }
+                    ],
+                    "creditsApplied": 0,
+                    "totalProductPrice": 6459,
+                    "totalTax": 0,
+                    "totalDiscount": 0,
+                    "totalShippingCost": 0,
+                    "totalHandlingCost": 0,
+                    "total": 6459
+                },
+                "shippingOption": {
+                    "name": "Standard"
+                },
+                "shippingMethod": "FEDEX.GROUND",
+                "originalCart": {
+                    "gift": {
+                        "message": "this is a gift message"
+                    }
+                },
+                "lineItems": [
+                    {
+                        "fulfillmentStatus": "PENDING",
+                        "quantity": 1,
+                        "product": {
+                            "id": 1
+                        },
+                        "variant": {
+                            "id": 1
+                        }
+                    },
+                    {
+                        "quantity": 1,
+                        "variant": {
+                            "globalSku": "P2"
+                        }
+                    }
+                ],
+                "allowSplit": "false"
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {"id": 123456}
+            
